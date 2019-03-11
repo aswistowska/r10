@@ -10,19 +10,18 @@
 import React, {Component} from 'react';
 import { ApolloProvider } from "react-apollo";
 import {client} from './apollo'
-
-import {About} from './screens/About';
-
 import { View } from 'react-native';
+import RootStackNavigator from './navigation/RootStackNavigator';
 
+export default class App extends React.Component {
+    render() {
+        return (
+            <ApolloProvider client={client}>
+                <View style={{backgroundColor: 'white', display: 'flex', flex: 1}}>
+                    <RootStackNavigator/>
+                </View>
+            </ApolloProvider>
+        )
+    }
+}
 
-const App = () => (
-    <ApolloProvider client={client}>
-        <View style={{backgroundColor: 'white', display: 'flex', flex: 1}}>
-            <About/>
-        </View>
-    </ApolloProvider>
-);
-
-
-export default App;
