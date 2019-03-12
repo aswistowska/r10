@@ -1,15 +1,19 @@
-import React, {Component} from 'react';
-import { createStackNavigator, createAppContainer} from "react-navigation";
-import AboutContainer from "../screens/About/AboutContainer";
-import {View} from "react-native";
+import React from 'react';
+import {createStackNavigator, createAppContainer} from "react-navigation";
 import AboutStack from "./NavigationLayout";
+import {colours} from "../config/styles";
 
 
+const RootStackNavigator = createStackNavigator(
+    {
+        About: {
+            screen: AboutStack,
+        }
+    },
+    {
+        headerMode: 'none',
 
-const RootStackNavigator = createStackNavigator({
-    About: {
-        screen: AboutStack,
     }
-});
+);
 
 export default createAppContainer(RootStackNavigator);
