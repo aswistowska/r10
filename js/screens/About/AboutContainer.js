@@ -4,7 +4,7 @@ import { Query } from "react-apollo";
 
 import About from './About';
 
-import {View, Text} from "react-native";
+import { Text} from "react-native";
 
 
 const GET_CONDUCT = gql`
