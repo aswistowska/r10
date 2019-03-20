@@ -1,12 +1,15 @@
 import React from 'react';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import {View, Text} from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Text, View} from 'react-native';
 
 import AboutScreen from '../screens/About';
+import ScheduleScreen from "../screens/Schedule";
+
 import {sharedNavigationOptions} from './config';
 import {colours} from "../config/styles";
+
 
 
 const AboutStack = createStackNavigator(
@@ -14,17 +17,32 @@ const AboutStack = createStackNavigator(
         About: AboutScreen
     },
     {
-        navigationOptions: ({navigation}) => ({
-            ...sharedNavigationOptions(navigation),
-        }),
-    }
+        defaultNavigationOptions: ({ navigation }) => ({
+            ...sharedNavigationOptions(navigation)
+        })
+    },
 );
+
+
+const ScheduleStack = createStackNavigator(
+    {
+        Schedule: ScheduleScreen
+    },
+    {
+        defaultNavigationOptions: ({ navigation }) => ({
+            ...sharedNavigationOptions(navigation)
+        })
+    },
+);
+
 
 // Dedicated stacks for Schedule and Faves will go here too!
 export default createBottomTabNavigator(
     {
+        Schedule: ScheduleStack,
+        Map: () => <View><Text>Map</Text></View>,
+        Faves: () => <View><Text>Faves</Text></View>,
         About: AboutStack,
-        Settings: () => <View><Text>Lorem ipsum</Text></View>
     },
     {
         tabBarOptions: {
@@ -46,8 +64,12 @@ export default createBottomTabNavigator(
                 let iconName;
                 if (routeName === 'About') {
                     iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-                } else if (routeName === 'Settings') {
-                    iconName = `ios-options`;
+                } else if (routeName === 'Schedule') {
+                    iconName = `ios-calendar`;
+                } else if (routeName === 'Map') {
+                    iconName = `ios-map`;
+                } else if (routeName === 'Faves') {
+                    iconName = `ios-heart`;
                 }
                 return <IconComponent name={iconName} size={25} color={tintColor}/>
             },
