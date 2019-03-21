@@ -9,6 +9,8 @@ import ScheduleScreen from "../screens/Schedule";
 
 import {sharedNavigationOptions} from './config';
 import {colours} from "../config/styles";
+import SessionScreen from "../screens/Session";
+import SpeakerScreen from "../screens/Speaker";
 
 
 
@@ -26,7 +28,9 @@ const AboutStack = createStackNavigator(
 
 const ScheduleStack = createStackNavigator(
     {
-        Schedule: ScheduleScreen
+        Schedule: ScheduleScreen,
+        Session: SessionScreen,
+        Speaker: SpeakerScreen
     },
     {
         defaultNavigationOptions: ({ navigation }) => ({

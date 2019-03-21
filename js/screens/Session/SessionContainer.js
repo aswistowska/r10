@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import {Text} from "react-native";
-import Schedule from "../Schedule/Schedule";
 import {formatSessionData} from "../../config/helpers";
+import Session from "./Session";
 
 const GET_SESSIONS = gql`
 {
@@ -17,20 +17,19 @@ const GET_SESSIONS = gql`
         id
         image
         name
-        bio
       }
     }
 }
 `;
 
-export default class ScheduleContainer extends Component{
+export default class SessionContainer extends Component {
     render() {
         return (
             <Query query={GET_SESSIONS}>
-                {({ loading, error, data }) => {
+                {({loading, error, data}) => {
                     if (loading) return <Text>"Loading..."</Text>;
                     if (error) return <Text>`Error! ${error.message}`</Text>;
-                    return <Schedule allSessions={formatSessionData(data.allSessions)}/>
+                    return <Session allSessions={formatSessionData(data.allSessions)}/>
                 }}
             </Query>
         )
