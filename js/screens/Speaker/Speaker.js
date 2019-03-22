@@ -3,15 +3,15 @@ import {ScrollView, Text, View, Image, Button} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 const Speaker = ({navigation}) => {
-    const speaker = navigation.getParam('speakerDetails', {});
+    const speakerDetails = navigation.getParam('speakerDetails', {});
     return (
         <ScrollView>
-            <View key={speaker.id}>
+            <View >
                 <Image source={{
-                    uri: `${speaker.speaker.image}`}}
+                    uri: `${speakerDetails.speaker.image}`}}
                        style={{width: 200, height: 200}}/>
-                <Text>{speaker.speaker.name}</Text>
-                <Text>{speaker.speaker.bio}</Text>
+                <Text>{speakerDetails.speaker.name}</Text>
+                <Text>{speakerDetails.speaker.bio}</Text>
                 <Button
                     title="Read more on Wikipedia"
                     onPress={() => {alert('Wait a second :P')}}
