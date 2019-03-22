@@ -26,7 +26,7 @@ const Schedule = ({allSessions, navigation}) => {
                         </TouchableHighlight>
                         <Ionicons
                             name='ios-heart'
-                            color="red"
+                            color="gray"
                             backgroundColor="transparent"
                             size={20}
                         />
